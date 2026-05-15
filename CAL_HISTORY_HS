@@ -1,0 +1,70 @@
+history=[]
+
+def add(a,b):
+    return a+b
+
+def subtract(a,b):
+    return a-b
+
+def multiply(a,b):
+    return a*b
+
+def division(a,b):
+    if(b==0):
+        return "error (division by zero)"
+    return a/b
+
+
+while True:
+    print("\n==calculator menu==")
+    print("1. addition")
+    print("2. subtraction")
+    print("3. multiplication")
+    print("4. division")
+    print("5. view history")
+    print("6. clean history")
+    print("7. exit")
+
+    choice = input("enter the choice(1-7):")
+
+    if choice in ['1','2','3','4']:
+        a=float(input("enter first number:"))
+        b=float(input("enter second number:"))
+
+        if(choice=='1'):
+            result=add(a,b)
+            operation=f"{a}+{b}={result}"
+
+        elif(choice=='2'):
+            result=subtract(a,b)
+            operation=f"{a}-{b}={result}"
+
+        elif(choice=='3'):
+            result=multiply(a,b)
+            operation=f"{a}*{b}={result}"
+
+        elif(choice=='4'):
+            result=division(a,b)
+            operation=f"{a}/{b}={result}"
+
+        print("Result:",result)
+        history.append(operation)
+
+    elif choice=='5':
+        print("\n--calculation history--")
+        if not history:
+            print("no history available")
+        else:
+            for i, item in enumerate(history,1):
+                print(f"{i}.{item}")
+
+    elif(choice=='6'):
+        history.clear()
+        print("history cleaned")
+
+    elif(choice=='7'):
+        print("existing calculator")
+        break
+
+    else:
+        print("invalid choice")
